@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Calendar, Clock, MapPin, Image, Phone, Mail, Tag } from "lucide-react";
-import { db, storage } from "../firebase";
+import { db, storage } from "../firebase"; // Make sure these are correctly imported
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
@@ -48,7 +48,7 @@ const CreateEvent = () => {
     setError(null);
 
     try {
-      // Upload banner
+      // Upload banner if provided
       let bannerUrl = null;
       if (eventData.banner && eventData.banner[0]) {
         bannerUrl = await uploadFile(eventData.banner[0], 'banners');
@@ -64,14 +64,14 @@ const CreateEvent = () => {
         isRsvpRequired: eventData.isRsvpRequired,
         contactDetails: eventData.contactDetails,
         bannerUrl,
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp()
+        createdAt: serverTimestamp(), // Store creation timestamp
+        updatedAt: serverTimestamp() // Store update timestamp
       };
 
       // Save to Firestore
       const docRef = await addDoc(collection(db, "events"), eventDataToSave);
       console.log("Event created with ID: ", docRef.id);
-      
+
       // Reset form
       setEventData({
         name: "",
@@ -98,6 +98,7 @@ const CreateEvent = () => {
       <h1>Create Your Event</h1>
       {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit}>
+        {/* Event Name Input */}
         <div className="form-group">
           <label htmlFor="name">
             <Tag className="icon" />
@@ -113,6 +114,8 @@ const CreateEvent = () => {
             placeholder="Enter event name"
           />
         </div>
+
+        {/* Description Input */}
         <div className="form-group">
           <label htmlFor="description">
             <Mail className="icon" />
@@ -127,6 +130,8 @@ const CreateEvent = () => {
             placeholder="Describe your event"
           />
         </div>
+
+        {/* Date and Time Inputs */}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="date">
@@ -157,6 +162,8 @@ const CreateEvent = () => {
             />
           </div>
         </div>
+
+        {/* Location Input */}
         <div className="form-group">
           <label htmlFor="location">
             <MapPin className="icon" />
@@ -172,6 +179,8 @@ const CreateEvent = () => {
             placeholder="Event location"
           />
         </div>
+
+        {/* RSVP Checkbox */}
         <div className="form-group checkbox-group">
           <input
             type="checkbox"
@@ -182,6 +191,8 @@ const CreateEvent = () => {
           />
           <label htmlFor="isRsvpRequired">RSVP Required</label>
         </div>
+
+        {/* File Input for Banner */}
         <div className="form-group file-input-group">
           <label htmlFor="banner" className="file-input-label">
             <Image className="icon" />
@@ -196,6 +207,8 @@ const CreateEvent = () => {
             accept="image/*"
           />
         </div>
+
+        {/* Contact Details Input */}
         <div className="form-group">
           <label htmlFor="contactDetails">
             <Phone className="icon" />
@@ -211,6 +224,8 @@ const CreateEvent = () => {
             placeholder="Your contact information"
           />
         </div>
+
+        {/* Submit Button */}
         <button 
           type="submit" 
           className="create-event-button"
