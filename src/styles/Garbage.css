@@ -1,0 +1,60 @@
+/* Garbage.css */
+
+/* Container for all truck tiles */
+.truck-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .truck-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  /* Individual truck tile with green gradient */
+  .truck-tile {
+    background: linear-gradient(to right, #38b2ac, #4fd1c5); /* Green gradient */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .truck-tile:hover {
+    background: linear-gradient(to right, #4fd1c5, #38b2ac); /* Hover gradient */
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  }
+  
+  .selected-tile {
+    box-shadow: 0 0 0 2px white;
+  }
+  
+  /* Styling for truck content */
+  .tile-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .truck-icon {
+    height: 48px;
+    width: 48px;
+  }
+  
+  .truck-details {
+    margin-left: 1rem;
+  }
+  
+  .truck-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .truck-driver, .truck-status, .truck-next-stop {
+    font-size: 0.9rem;
+    color: #ffffffb3; /* Lighter white */
+  }
+  
