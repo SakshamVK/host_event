@@ -1,12 +1,14 @@
+// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import Sidebar from "./components/Sidebar"; // Assuming your Sidebar component is here
+import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
 import MyEvents from "./pages/MyEvents";
-import HomePage from './pages/HomePage';
+import HomePage from "./pages/HomePage";
+import GarbageDashboard from "./pages/Garbage"; // Import GarbageDashboard component
 
 function App() {
   return (
@@ -22,31 +24,25 @@ function MainApp() {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
 
-  // Check if user is authenticated and not on the login/signup page
-  if (isAuthenticated && location.pathname !== "/" && location.pathname !== "/signup") {
-    return (
-      <div style={{ display: 'flex' }}>
-        {/* Sidebar will always be displayed on the left side */}
-        <Sidebar />
-        
-        {/* The rest of the content will have a margin to not overlap with the Sidebar */}
-        <div style={{ marginLeft: '250px', padding: '20px', width: '100%' }}>
-          <Routes>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/create-event" element={<CreateEvent />} />
-            <Route path="/my-events" element={<MyEvents />} />
-          </Routes>
-        </div>
-      </div>
-    );
-  }
-
-  // Render login and signup pages if the user is not authenticated
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-    </Routes>
+    <div style={{ display: "flex" }}>
+      {/* Render Sidebar if authenticated and not on Login/Signup */}
+      {isAuthenticated && location.pathname !== "/" && location.pathname !== "/signup" && (
+        <Sidebar />
+      )}
+      
+      <div style={{ flex: 1, padding: "20px", marginLeft: isAuthenticated ? "250px" : "0" }}>
+        {/* Adjust margin for the sidebar if authenticated */}
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/my-events" element={<MyEvents />} />
+          <Route path="/garbage" element={<GarbageDashboard />} /> {/* Garbage Dashboard Route */}
+        </Routes>
+      </div>
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@
   backdrop-filter: blur(30px); /* Optional blur effect */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Right shadow */
   z-index: 1000; /* Keep it above other elements */
-  padding: 20px; /* Padding inside the sidebar */
+  padding: 10px; /* Padding inside the sidebar */
   display: flex;
   flex-direction: column; /* Stack child elements vertically */
 }
