@@ -14,6 +14,7 @@ import {
   MapPin,
   Clock
 } from 'lucide-react';
+import "../styles/MyEvents.css";
 
 const MyEvents = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -104,7 +105,7 @@ const MyEvents = () => {
     switch(activeTab) {
       case 'details':
         return (
-          <div className="space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-details space-y-4 p-6 bg-black/40 rounded-lg">
             <div className="flex items-center gap-3 text-emerald-400">
               <Clock size={18} />
               <span>{event.time}</span>
@@ -118,7 +119,7 @@ const MyEvents = () => {
         );
       case 'attendees':
         return (
-          <div className="space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-attendees space-y-4 p-6 bg-black/40 rounded-lg">
             {event.attendees.map(attendee => (
               <div key={attendee.id} className="flex items-center justify-between p-3 bg-black/60 rounded-lg">
                 <div className="flex items-center gap-3">
@@ -135,7 +136,7 @@ const MyEvents = () => {
         );
       case 'reviews':
         return (
-          <div className="space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-reviews space-y-4 p-6 bg-black/40 rounded-lg">
             {event.reviews.map(review => (
               <div key={review.id} className="p-4 bg-black/60 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
@@ -162,7 +163,7 @@ const MyEvents = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 font-sans">
+    <div className="min-h-screen bg-gradient text-white p-8 font-sans">
       <h1 className="text-4xl font-bold text-center mb-12 text-emerald-400">My Events</h1>
       
       <div className="max-w-4xl mx-auto grid gap-8">
@@ -193,35 +194,35 @@ const MyEvents = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-3 gap-4">
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Calendar size={18} className="text-emerald-400" />
-                  <span>{new Date(event.date).toLocaleDateString()}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Users size={18} className="text-emerald-400" />
-                  <span>{event.attendees.length} attendees</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Star size={18} className="text-emerald-400" />
-                  <span>{event.reviews.length} reviews</span>
-                </div>
+              <div className="flex justify-between text-gray-300">
+                <span>{event.date}</span>
+                <span>{event.attendees.length} Attendees</span>
               </div>
             </div>
 
-            <div className="flex border-b border-emerald-900/30">
-              {['details', 'attendees', 'reviews'].map((tab) => (
+            <div className="p-4">
+              <div className="flex justify-between">
                 <button 
-                  key={tab} 
-                  onClick={() => setActiveTab(tab)} 
-                  className={`w-full py-4 px-6 text-center ${activeTab === tab ? 'text-emerald-400 border-b-2 border-emerald-400' : 'text-gray-300'}`}
+                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'details' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
+                  onClick={() => setActiveTab('details')}
                 >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  Details
                 </button>
-              ))}
+                <button 
+                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'attendees' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
+                  onClick={() => setActiveTab('attendees')}
+                >
+                  Attendees
+                </button>
+                <button 
+                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'reviews' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
+                  onClick={() => setActiveTab('reviews')}
+                >
+                  Reviews
+                </button>
+              </div>
+              <TabContent event={event} />
             </div>
-
-            <TabContent event={event} />
           </div>
         ))}
       </div>
