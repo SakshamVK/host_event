@@ -40,7 +40,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-header">
         <Link to="/home" className="sidebar-brand">
-          <span className="brand-text">VibeCheck</span>
+          <span className="brand-text">Safai Saathi</span>
         </Link>
       </div>
 

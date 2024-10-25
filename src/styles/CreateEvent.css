@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --primary-color: #4a90e2;
-  --primary-dark: #3a75c4;
-  --secondary-color: #ff6b6b;
-  --background-light: #f8f9fa;
-  --text-light: #202124;
-  --input-bg-light: #ffffff;
-  --input-border-light: #dadce0;
+  --primary-color: #039139; /* Dark green primary color */
+  --primary-dark: #388e3c;  /* Dark green primary dark */
+  --secondary-color: #039139; /* Secondary color remains the same */
+  --background-light: #000; /* Black background */
+  --text-light: #fff; /* White text */
+  --input-bg-light: #1a1a1a; /* Dark background for inputs */
+  --input-border-light: #dadce0; /* Light border */
 }
 
 .dark-mode {
-  --primary-color: #8ab4f8;
-  --primary-dark: #aecbfa;
-  --secondary-color: #ff8585;
-  --background-light: #202124;
-  --text-light: #e8eaed;
-  --input-bg-light: #303134;
-  --input-border-light: #5f6368;
+  --primary-color: #8ab4f8; /* Original dark mode primary color */
+  --primary-dark: #aecbfa; /* Original dark mode primary dark */
+  --secondary-color: #08be4e; /* Original dark mode secondary */
+  --background-light: #202124; /* Dark mode background */
+  --text-light: #e8eaed; /* Dark mode text */
+  --input-bg-light: #303134; /* Dark mode input background */
+  --input-border-light: #5f6368; /* Dark mode input border */
 }
 
 body {
@@ -26,10 +26,6 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
-  background-image: url('https://source.unsplash.com/1600x900/?abstract,geometry');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
 }
 
 .create-event-container {
@@ -37,7 +33,7 @@ body {
   margin: 40px auto;
   padding: 40px;
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(30, 30, 30, 0.9); /* Darker background for the container */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -49,7 +45,7 @@ body {
 
 h1 {
   text-align: center;
-  color: var(--primary-color);
+  color: var(--primary-color); /* Dark green for the title */
   font-size: 36px;
   margin-bottom: 40px;
   text-transform: uppercase;
@@ -64,7 +60,6 @@ h1::after {
   height: 4px;
   background-color: var(--secondary-color);
   margin: 15px auto 0;
-  border-radius: 2px;
 }
 
 .form-group {
@@ -91,7 +86,7 @@ label {
 
 .icon {
   margin-right: 8px;
-  color: var(--primary-color);
+  color: var(--primary-color); /* Dark green icon color */
 }
 
 input[type="text"],
@@ -116,7 +111,7 @@ select:focus,
 textarea:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2); /* Dark green focus shadow */
 }
 
 textarea {
@@ -126,7 +121,7 @@ textarea {
 
 select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234a90e2' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234caf50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
   background-size: 14px;
@@ -180,7 +175,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .file-input-label:hover {
-  background-color: #ff8585;
+  background-color: #03451c; /* Slightly different secondary color on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -216,7 +211,7 @@ input[type="file"] {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    #03451c,
     transparent
   );
   transition: all 0.6s;
