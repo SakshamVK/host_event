@@ -1,4 +1,4 @@
-// src/App.js
+// App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
@@ -8,7 +8,8 @@ import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
 import MyEvents from "./pages/MyEvents";
 import HomePage from "./pages/HomePage";
-import GarbageDashboard from "./pages/Garbage"; // Import GarbageDashboard component
+import GarbageDashboard from "./pages/Garbage";
+import Profile from "./pages/Profile"; // Updated import name
 
 function App() {
   return (
@@ -26,20 +27,19 @@ function MainApp() {
 
   return (
     <div style={{ display: "flex" }}>
-      {/* Render Sidebar if authenticated and not on Login/Signup */}
       {isAuthenticated && location.pathname !== "/" && location.pathname !== "/signup" && (
         <Sidebar />
       )}
       
       <div style={{ flex: 1, padding: "20px", marginLeft: isAuthenticated ? "250px" : "0" }}>
-        {/* Adjust margin for the sidebar if authenticated */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/my-events" element={<MyEvents />} />
-          <Route path="/garbage" element={<GarbageDashboard />} /> {/* Garbage Dashboard Route */}
+          <Route path="/garbage" element={<GarbageDashboard />} />
+          <Route path="/profile" element={<Profile />} /> {/* Updated route path */}
         </Routes>
       </div>
     </div>

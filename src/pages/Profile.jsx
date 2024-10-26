@@ -1,21 +1,21 @@
 import React from "react";
-import "./NGOProfile.css"; // Assuming you have a CSS file for styling
+import "../styles/Profile.css"; // Assuming you have a CSS file for styling
 
-const NGOProfile = () => {
+const Profile = () => {
   const ngoData = {
     name: "Helping Hands NGO",
-    logo: "logo-url.png", // Replace with actual logo URL
-    establishedDate: "2010",
-    mission: "To empower underprivileged communities through education and healthcare.",
-    vision: "A world where everyone has access to quality education and health services.",
+    logo: "https://thumbs.dreamstime.com/b/recycling-electrical-items-sign-separate-e-waste-logo-template-icon-258275519.jpg", // Replace with actual logo URL
+    establishedDate: "2024",
+    mission: "Our mission is to foster a sustainable future by responsibly managing electronic waste through innovative solutions that promote recycling, reduce environmental impact, and empower communities to contribute towards a cleaner and greener planet.",
+    vision: "Our vision is to create a world where e-waste is no longer a burden on the environment but a resource for sustainable development, fostering a circular economy where electronic products are responsibly recycled, reused, and repurposed to protect our planet for future generations.",
     programs: [
       {
-        title: "Education for All",
-        description: "Providing free education to children in rural areas.",
+        title: "E-Waste Collection and Recycling Program",
+        description: "A nationwide or community-based initiative focused on collecting discarded electronic devices from households, businesses, and institutions. The collected items are safely dismantled, and reusable components are separated for recycling. This program aims to reduce landfill waste and ensure the proper disposal of hazardous materials in e-waste.",
       },
       {
-        title: "Health Care Services",
-        description: "Offering free medical check-ups and health awareness camps.",
+        title: "E-Waste Awareness and Education Campaign",
+        description: "A program aimed at educating the public on the environmental impact of improper e-waste disposal and the importance of recycling electronics. This includes workshops, school outreach, and digital campaigns to spread awareness about how to manage e-waste properly, encourage repair and reuse, and provide information on local drop-off points for e-waste.",
       },
     ],
     contact: {
@@ -48,7 +48,7 @@ const NGOProfile = () => {
               <h3>{program.title}</h3>
               <p>{program.description}</p>
             </li>
-          ))}
+          ))} 
         </ul>
       </section>
 
@@ -58,18 +58,8 @@ const NGOProfile = () => {
         <p>Phone: {ngoData.contact.phone}</p>
         <p>Email: <a href={`mailto:${ngoData.contact.email}`}>{ngoData.contact.email}</a></p>
       </section>
-
-      <section className="contact-form">
-        <h2>Get In Touch</h2>
-        <form>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </section>
     </div>
   );
 };
 
-export default NGOProfile;
+export default Profile;
