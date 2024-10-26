@@ -1,7 +1,8 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #1f2937; /* Background remains unchanged */
+  background-color: #198b28;
+  padding: 2rem;
 }
 
 .modal-overlay {
@@ -10,329 +11,280 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 2rem;
 }
 
 .modal-content {
   background-color: #1f2937;
-  padding: 24px;
-  border-radius: 8px;
+  padding: 2.5rem;
+  border-radius: 16px;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px;
   position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 h3 {
-  color: #4caf50; /* Changed to #4caf50 */
-  margin-bottom: 16px;
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  letter-spacing: 0.5px;
 }
 
 .share-options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.25rem;
+  margin: 2rem 0;
 }
 
-.share-btn {
+.action-buttons {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px;
-  border: 1px solid #4caf50; /* Changed to #4caf50 */
-  background-color: transparent;
-  border-radius: 4px;
-  color: #4caf50; /* Changed to #4caf50 */
-  cursor: pointer;
-  transition: background-color 0.3s;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.share-btn:hover {
-  background-color: rgba(76, 175, 80, 0.1); /* Updated to match #4caf50 */
+.share-btn, 
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #4caf50;
+  background-color: transparent;
+  border-radius: 25px;  /* More rounded buttons */
+  color: #4caf50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.share-btn:hover,
+.edit-btn:hover {
+  background-color: rgba(4, 186, 10, 0.749);
+  transform: translateY(-2px);
 }
 
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 1.5rem;
+  right: 1.5rem;
   background: none;
   border: none;
-  color: #fff;
+  color: #20ab07;
   cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .edit-form .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 2rem;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: flex-end; /* Aligns the items to the right */
 }
 
 .edit-form .form-group label {
   display: block;
-  color: #fff;
-  margin-bottom: 8px;
+  color: #3ab509;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .edit-form .form-group input,
 .edit-form .form-group textarea {
-  width: 100%;
-  padding: 8px;
+  width: 70%; /* Set width to 70% for shorter borders */
+  max-width: 400px; /* Optional: Set a max width */
+  padding: 1rem;
   background-color: #374151;
-  border: none;
-  border-radius: 4px;
+  border: 2px solid transparent;
+  border-radius: 12px;
   color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-left: auto; /* Push the input to the right */
+}
+
+.edit-form .form-group input:focus,
+.edit-form .form-group textarea:focus {
+  border-color: #4caf50;
+  outline: none;
 }
 
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .save-btn,
 .cancel-btn {
-  padding: 8px 16px;
-  background-color: #4caf50; /* Changed to #4caf50 */
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 25px;  /* More rounded buttons */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background-color: #4caf50;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .save-btn:hover {
-  background-color: #388e3c; /* Changed to #388e3c */
+  background-color: #388e3c;
+  transform: translateY(-2px);
 }
 
 .cancel-btn {
-  background-color: #d1d5db;
-  color: #111827;
+  background-color: #374151;
+  color: #fff;
+  border: 1px solid #4b5563;
 }
 
 .cancel-btn:hover {
-  background-color: #9ca3af;
+  background-color: #4b5563;
+  transform: translateY(-2px);
 }
 
 /* Event Card Styles */
 .event-card {
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: 1rem;
-  border: 1px solid rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  border: 2px solid rgba(76, 175, 80, 0.2);
   overflow: hidden;
-  transition: all 0.3s;
+  transition: all 0.4s ease;
+  margin: 2rem 0;
 }
 
 .event-details,
 .event-attendees,
 .event-reviews {
-  padding: 1.5rem; /* Increased padding for better spacing */
-  background-color: rgba(31, 41, 55, 0.8); /* Slightly darker background for sections */
-  border-radius: 0.5rem;
+  padding: 2.5rem;
+  background-color: rgba(17, 24, 39, 0.95);  /* Darker background */
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  margin: 2rem;
+  border: 1px solid rgba(49, 165, 52, 0.1);
+}
+
+.event-details:hover,
+.event-attendees:hover,
+.event-reviews:hover {
+  background-color: rgba(17, 24, 39, 0.98);  /* Slightly darker on hover */
+  transform: translateY(-4px);
 }
 
 .event-details p {
-  margin: 1rem 0;
-  line-height: 1.5;
-  color: #e5e7eb; /* Light gray for text */
+  margin: 1.5rem 0;
+  line-height: 1.8;
+  color: #09a216;  /* Slightly darker text */
+  font-size: 1.1rem;
 }
 
 /* Tab Navigation Styles */
 button {
   border: none;
   outline: none;
+  background-color:#7bee85;
   cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border-radius: 25px;  /* More rounded buttons */
 }
 
 button:hover {
-  background-color: rgba(76, 175, 80, 0.1); /* Updated to match #4caf50 */
+  background-color: rgba(22, 175, 27, 0.712);
+  transform: translateY(-2px);
 }
 
-button:focus {
-  outline: none;
+/* Spacing Utilities */
+.mb-2 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 3rem; }
+.p-6 { padding: 2.5rem; }
+.p-3 { padding: 1rem; }
+.gap-8 { gap: 2.5rem; }
+.gap-4 { gap: 1.5rem; }
+
+/* Grid and Layout */
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
 }
 
 .flex {
   display: flex;
+  gap: 1.5rem;
 }
 
-.flex-1 {
-  flex: 1;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.text-gray-300 {
-  color: rgba(226, 232, 240, 1);
-}
-
-.text-emerald-400 {
-  color: #4caf50; /* Changed to #4caf50 */
-}
-
-.bg-black {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.bg-black/60 {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.bg-black/80 {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.backdrop-blur-lg {
-  backdrop-filter: blur(10px);
-}
-
-.rounded-xl {
-  border-radius: 1rem;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.transition-all {
-  transition: all 0.3s;
-}
-
-.hover\:shadow-lg:hover {
-  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
-}
-
-.hover\:border-emerald-400\/50:hover {
-  border-color: rgba(76, 175, 80, 0.5); /* Changed to #4caf50 */
-}
-
-.border-emerald-600\/20 {
-  border-color: rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
-}
-
+/* Typography */
 .text-2xl {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  line-height: 1.4;
 }
 
 .font-semibold {
   font-weight: 600;
-}
-
-.font-bold {
-  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 .text-center {
   text-align: center;
 }
 
+/* Container */
 .max-w-4xl {
-  max-width: 64rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.grid {
-  display: grid;
-}
-
-.gap-8 {
-  gap: 2rem;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.text-gray-200 {
-  color: #e5e7eb;
-}
-
-.text-gray-100 {
-  color: #f3f4f6;
-}
-
-.text-emerald-400 {
-  color: #4caf50; /* Changed to #4caf50 */
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.hover\:bg-emerald-700:hover {
-  background-color: rgba(76, 175, 80, 0.7); /* Changed to #4caf50 */
-}
-
-.bg-emerald-600 {
-  background-color: #388e3c; /* Changed to #388e3c */
-}
-
-.bg-emerald-950\/50 {
-  background-color: rgba(76, 175, 80, 0.5); /* Changed to #4caf50 */
-}
-
-.bg-emerald-900\/50 {
-  background-color: rgba(76, 175, 80, 0.7); /* Changed to #4caf50 */
-}
-
-/* Misc Styles */
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
+/* Cards and Sections */
 .rounded-xl {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
-.p-4 {
-  padding: 1rem;
+.hover\:shadow-lg:hover {
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.15);
 }
 
-.text-emerald-400 {
-  color: #4caf50; /* Changed to #4caf50 */
-}
-
+/* Additional Spacing for Share Options */
 .share-options {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Increased gap for spacing between buttons */
+  margin: 2.5rem 0;
 }
 
 .edit-options {
-  margin-top: 20px; /* Add margin to create space above the edit options */
+  margin-top: 2.5rem;
 }
 
+/* Button Spacing */
 .p-2.rounded-lg.bg-emerald-950\/50.hover\:bg-emerald-900\/50.transition-colors {
-  margin-bottom: 8px; /* Adjust this value as needed for spacing */
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 25px;  /* More rounded buttons */
+}
+
+/* Action buttons container */
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1.5rem 2rem;
 }
