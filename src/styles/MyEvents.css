@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1f2937; /* Background remains unchanged */
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -21,7 +27,7 @@
 }
 
 h3 {
-  color: #10b981;
+  color: #4caf50; /* Changed to #4caf50 */
   margin-bottom: 16px;
 }
 
@@ -36,16 +42,16 @@ h3 {
   align-items: center;
   gap: 8px;
   padding: 12px;
-  border: 1px solid #10b981;
+  border: 1px solid #4caf50; /* Changed to #4caf50 */
   background-color: transparent;
   border-radius: 4px;
-  color: #10b981;
+  color: #4caf50; /* Changed to #4caf50 */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .share-btn:hover {
-  background-color: rgba(16, 185, 129, 0.1);
+  background-color: rgba(76, 175, 80, 0.1); /* Updated to match #4caf50 */
 }
 
 .close-btn {
@@ -87,7 +93,7 @@ h3 {
 .save-btn,
 .cancel-btn {
   padding: 8px 16px;
-  background-color: #10b981;
+  background-color: #4caf50; /* Changed to #4caf50 */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -96,7 +102,7 @@ h3 {
 }
 
 .save-btn:hover {
-  background-color: #059669;
+  background-color: #388e3c; /* Changed to #388e3c */
 }
 
 .cancel-btn {
@@ -108,60 +114,147 @@ h3 {
   background-color: #9ca3af;
 }
 
-/* Event specific styles */
+/* Event Card Styles */
+.event-card {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  border: 1px solid rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
 .event-details,
 .event-attendees,
 .event-reviews {
-  padding: 16px;
+  padding: 1.5rem; /* Increased padding for better spacing */
+  background-color: rgba(31, 41, 55, 0.8); /* Slightly darker background for sections */
+  border-radius: 0.5rem;
 }
 
-.event-attendees {
+.event-details p {
+  margin: 1rem 0;
+  line-height: 1.5;
+  color: #e5e7eb; /* Light gray for text */
+}
+
+/* Tab Navigation Styles */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(76, 175, 80, 0.1); /* Updated to match #4caf50 */
+}
+
+button:focus {
+  outline: none;
+}
+
+.flex {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
-.event-reviews {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.flex-1 {
+  flex: 1;
 }
 
-h4 {
-  margin-bottom: 12px;
+.items-center {
+  align-items: center;
 }
 
-.text-emerald-400 {
-  color: #10b981; /* or customize to match your theme */
+.justify-between {
+  justify-content: space-between;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .text-gray-300 {
-  color: #d1d5db;
+  color: rgba(226, 232, 240, 1);
+}
+
+.text-emerald-400 {
+  color: #4caf50; /* Changed to #4caf50 */
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .bg-black/60 {
-  background-color: rgba(31, 41, 55, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.hover\:bg-emerald-900\/50:hover {
-  background-color: rgba(16, 185, 129, 0.5);
-}
-
-.hover\:border-emerald-400\/50:hover {
-  border-color: rgba(16, 185, 129, 0.5);
+.bg-black/80 {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .backdrop-blur-lg {
   backdrop-filter: blur(10px);
 }
 
-/* General layout for MyEvents */
-.min-h-screen {
-  min-height: 100vh;
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.transition-all {
+  transition: all 0.3s;
+}
+
+.hover\:shadow-lg:hover {
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
+}
+
+.hover\:border-emerald-400\/50:hover {
+  border-color: rgba(76, 175, 80, 0.5); /* Changed to #4caf50 */
+}
+
+.border-emerald-600\/20 {
+  border-color: rgba(76, 175, 80, 0.2); /* Changed to #4caf50 */
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .max-w-4xl {
-  max-width: 1024px;
+  max-width: 64rem;
 }
 
 .mx-auto {
@@ -177,99 +270,69 @@ h4 {
   gap: 2rem;
 }
 
-.bg-black {
-  background-color: rgba(31, 41, 55, 1);
-}
-
-.rounded-xl {
-  border-radius: 1rem;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-emerald-600\/20 {
-  border-color: rgba(16, 185, 129, 0.2);
-}
-
-.transition-all {
-  transition: all 0.3s ease;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
-}
-
-.hover\:shadow-lg:hover {
-  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
-}
-
-.hover\:shadow-emerald-900\/20:hover {
-  box-shadow: 0 10px 20px rgba(31, 41, 55, 0.2);
-}
-
-/* Flexbox utility classes */
-.flex {
-  display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-3 {
-  gap: 0.75rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-gray-400 {
-  color: #cbd5e1;
+.gap-4 {
+  gap: 1rem;
 }
 
 .text-gray-200 {
   color: #e5e7eb;
 }
 
-.font-bold {
-  font-weight: bold;
+.text-gray-100 {
+  color: #f3f4f6;
 }
 
-.font-medium {
-  font-weight: 500;
+.text-emerald-400 {
+  color: #4caf50; /* Changed to #4caf50 */
 }
 
 .flex-1 {
-  flex: 1 1 0%;
+  flex: 1;
 }
 
-.border-b {
-  border-bottom-width: 1px;
+.hover\:bg-emerald-700:hover {
+  background-color: rgba(76, 175, 80, 0.7); /* Changed to #4caf50 */
 }
 
-.border-emerald-900\/30 {
-  border-color: rgba(16, 185, 129, 0.3);
+.bg-emerald-600 {
+  background-color: #388e3c; /* Changed to #388e3c */
 }
 
-.hover\:text-emerald-400:hover {
-  color: #10b981;
+.bg-emerald-950\/50 {
+  background-color: rgba(76, 175, 80, 0.5); /* Changed to #4caf50 */
+}
+
+.bg-emerald-900\/50 {
+  background-color: rgba(76, 175, 80, 0.7); /* Changed to #4caf50 */
+}
+
+/* Misc Styles */
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.text-emerald-400 {
+  color: #4caf50; /* Changed to #4caf50 */
+}
+
+.share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for spacing between buttons */
+}
+
+.edit-options {
+  margin-top: 20px; /* Add margin to create space above the edit options */
+}
+
+.p-2.rounded-lg.bg-emerald-950\/50.hover\:bg-emerald-900\/50.transition-colors {
+  margin-bottom: 8px; /* Adjust this value as needed for spacing */
 }

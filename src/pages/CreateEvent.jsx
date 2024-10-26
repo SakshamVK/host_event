@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Calendar, Clock, MapPin, Image, Phone, Mail, Tag } from "lucide-react";
-import { db, storage } from "../firebase"; // Make sure these are correctly imported
+import { db, storage } from "../firebase"; // Ensure these are correctly imported
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api"; // Google Maps API components
 import "../styles/CreateEvent.css";
 
 const CreateEvent = () => {
@@ -12,13 +13,20 @@ const CreateEvent = () => {
     description: "",
     date: "",
     time: "",
-    location: "",
+    location: "", // Updated with selected location from map
     isRsvpRequired: false,
     banner: null,
     contactDetails: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null); // Set to null initially to only show pin after click
+
+  // Map settings
+  const mapContainerStyle = {
+    height: "400px",
+    width: "100%",
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -51,7 +59,7 @@ const CreateEvent = () => {
       // Upload banner if provided
       let bannerUrl = null;
       if (eventData.banner && eventData.banner[0]) {
-        bannerUrl = await uploadFile(eventData.banner[0], 'banners');
+        bannerUrl = await uploadFile(eventData.banner[0], "banners");
       }
 
       // Prepare event data for Firestore
@@ -60,12 +68,12 @@ const CreateEvent = () => {
         description: eventData.description,
         date: eventData.date,
         time: eventData.time,
-        location: eventData.location,
+        location: eventData.location, // Final location selected
         isRsvpRequired: eventData.isRsvpRequired,
         contactDetails: eventData.contactDetails,
         bannerUrl,
-        createdAt: serverTimestamp(), // Store creation timestamp
-        updatedAt: serverTimestamp() // Store update timestamp
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
       };
 
       // Save to Firestore
@@ -83,6 +91,7 @@ const CreateEvent = () => {
         banner: null,
         contactDetails: "",
       });
+      setSelectedLocation(null); // Reset marker
 
       alert("Event created successfully!");
     } catch (err) {
@@ -91,6 +100,19 @@ const CreateEvent = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Handle map click to update location with pin drop
+  const handleMapClick = (event) => {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+    const locationString = `${lat}, ${lng}`;
+
+    setSelectedLocation({ lat, lng });
+    setEventData((prevData) => ({
+      ...prevData,
+      location: locationString,
+    }));
   };
 
   return (
@@ -163,34 +185,44 @@ const CreateEvent = () => {
           </div>
         </div>
 
-        {/* Location Input */}
+        {/* Location Input (Auto-filled from map pin drop) */}
         <div className="form-group">
           <label htmlFor="location">
             <MapPin className="icon" />
-            Location
+            Location (Pin Drop on Map)
           </label>
           <input
             type="text"
             id="location"
             name="location"
             value={eventData.location}
-            onChange={handleChange}
-            required
-            placeholder="Event location"
+            readOnly // Read-only to prevent editing
+            placeholder="Select a location on the map"
           />
         </div>
 
-        {/* RSVP Checkbox */}
-        <div className="form-group checkbox-group">
-          <input
-            type="checkbox"
-            id="isRsvpRequired"
-            name="isRsvpRequired"
-            checked={eventData.isRsvpRequired}
-            onChange={handleChange}
-          />
-          <label htmlFor="isRsvpRequired">RSVP Required</label>
+        {/* Map View */}
+        <div className="map-view">
+          <LoadScript googleMapsApiKey="AIzaSyB7VZLnFBTbPZkWnlvKsa5chOctCRqA4ms">
+            <GoogleMap
+              mapContainerStyle={mapContainerStyle}
+              center={selectedLocation || { lat: 37.7749, lng: -122.4194 }} // Default to San Francisco if no location
+              zoom={15}
+              onClick={handleMapClick} // Handle map click to update location
+            >
+              {selectedLocation && (
+                <Marker
+                  position={selectedLocation}
+                  draggable
+                  onDragEnd={(e) => handleMapClick(e)}
+                />
+              )}
+            </GoogleMap>
+          </LoadScript>
         </div>
+
+        {/* RSVP Checkbox */}
+
 
         {/* File Input for Banner */}
         <div className="form-group file-input-group">
@@ -226,8 +258,8 @@ const CreateEvent = () => {
         </div>
 
         {/* Submit Button */}
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="create-event-button"
           disabled={isLoading}
         >
