@@ -1,16 +1,22 @@
 /* Garbage.css */
 
-/* Container for all truck tiles */
-.truck-container {
+/* General styles for the entire page */
+body {
+    background-color: #121212; /* Dark background for the overall theme */
+    color: white; /* Text color */
+  }
+  
+  /* Container for all truck tiles */
+  .truck-container {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 1rem; /* Space between tiles */
     padding: 1rem;
   }
   
   @media (min-width: 768px) {
     .truck-container {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns on larger screens */
     }
   }
   
@@ -25,36 +31,93 @@
   
   .truck-tile:hover {
     background: linear-gradient(to right, #4fd1c5, #38b2ac); /* Hover gradient */
-    transform: scale(1.02);
+    transform: scale(1.02); /* Slightly scale up on hover */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
   }
   
   .selected-tile {
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 2px white; /* Outline for selected tile */
   }
   
   /* Styling for truck content */
   .tile-content {
     display: flex;
-    align-items: center;
+    align-items: center; /* Center the items vertically */
   }
   
   .truck-icon {
-    height: 48px;
-    width: 48px;
+    height: 48px; /* Fixed height for truck icon */
+    width: 48px; /* Fixed width for truck icon */
   }
   
   .truck-details {
-    margin-left: 1rem;
+    margin-left: 1rem; /* Space between icon and details */
   }
   
+  /* Title style */
   .truck-title {
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-weight: bold; /* Bold title */
+    font-size: 1.2rem; /* Title font size */
   }
   
-  .truck-driver, .truck-status, .truck-next-stop {
-    font-size: 0.9rem;
-    color: #ffffffb3; /* Lighter white */
+  /* Styles for driver, status, and next stop */
+  .truck-driver,
+  .truck-status,
+  .truck-next-stop {
+    font-size: 0.9rem; /* Smaller font size for these details */
+    color: #ffffffb3; /* Lighter white for secondary text */
+  }
+  
+  /* Container for all bin tiles */
+  .bin-container {
+    display: flex; /* Flexbox layout for bins */
+    flex-wrap: wrap; /* Wrap to next line if necessary */
+    justify-content: center; /* Center align bins */
+    padding: 1rem; /* Padding around the container */
+  }
+  
+  /* Individual bin tile */
+  .bin-tile {
+    background-color: #333; /* Dark background for bins */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px; /* Space between bins */
+    padding: 16px; /* Padding inside tiles */
+    width: 200px; /* Fixed width for bins */
+    color: white; /* Text color */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center align items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: transform 0.3s; /* Smooth hover effect */
+  }
+  
+  .bin-tile:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  
+  .bin-icon {
+    width: 50px; /* Fixed size for bin icon */
+    height: 50px; /* Fixed size for bin icon */
+    margin-bottom: 8px; /* Space below the icon */
+  }
+  
+  /* Styling for bin details */
+  .bin-details {
+    text-align: center; /* Center text in details */
+  }
+  
+  .bin-title {
+    font-size: 1.2em; /* Title font size */
+    font-weight: bold; /* Bold title */
+  }
+  
+  .bin-status {
+    font-size: 1em; /* Status font size */
+    margin-bottom: 4px; /* Space below status */
+  }
+  
+  .bin-location {
+    font-size: 0.9em; /* Smaller font for location */
+    color: #ccc; /* Lighter color for location */
   }
   
