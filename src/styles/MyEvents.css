@@ -107,3 +107,169 @@ h3 {
 .cancel-btn:hover {
   background-color: #9ca3af;
 }
+
+/* Event specific styles */
+.event-details,
+.event-attendees,
+.event-reviews {
+  padding: 16px;
+}
+
+.event-attendees {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h4 {
+  margin-bottom: 12px;
+}
+
+.text-emerald-400 {
+  color: #10b981; /* or customize to match your theme */
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.bg-black/60 {
+  background-color: rgba(31, 41, 55, 0.6);
+}
+
+.hover\:bg-emerald-900\/50:hover {
+  background-color: rgba(16, 185, 129, 0.5);
+}
+
+.hover\:border-emerald-400\/50:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(10px);
+}
+
+/* General layout for MyEvents */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.max-w-4xl {
+  max-width: 1024px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.bg-black {
+  background-color: rgba(31, 41, 55, 1);
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-emerald-600\/20 {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+}
+
+.hover\:shadow-emerald-900\/20:hover {
+  box-shadow: 0 10px 20px rgba(31, 41, 55, 0.2);
+}
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray-400 {
+  color: #cbd5e1;
+}
+
+.text-gray-200 {
+  color: #e5e7eb;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-emerald-900\/30 {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.hover\:text-emerald-400:hover {
+  color: #10b981;
+}
