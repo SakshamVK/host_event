@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --primary-color: #039139; /* Dark green primary color */
-  --primary-dark: #388e3c;  /* Dark green primary dark */
-  --secondary-color: #039139; /* Secondary color remains the same */
-  --background-light: #000; /* Black background */
-  --text-light: #fff; /* White text */
-  --input-bg-light: #1a1a1a; /* Dark background for inputs */
-  --input-border-light: #dadce0; /* Light border */
+  --primary-color: #039139;
+  --primary-dark: #388e3c;
+  --secondary-color: #039139;
+  --background-light: #000;
+  --text-light: #fff;
+  --input-bg-light: #1a1a1a;
+  --input-border-light: #dadce0;
 }
 
 .dark-mode {
-  --primary-color: #8ab4f8; /* Original dark mode primary color */
-  --primary-dark: #aecbfa; /* Original dark mode primary dark */
-  --secondary-color: #08be4e; /* Original dark mode secondary */
-  --background-light: #202124; /* Dark mode background */
-  --text-light: #e8eaed; /* Dark mode text */
-  --input-bg-light: #303134; /* Dark mode input background */
-  --input-border-light: #5f6368; /* Dark mode input border */
+  --primary-color: #8ab4f8;
+  --primary-dark: #aecbfa;
+  --secondary-color: #08be4e;
+  --background-light: #202124;
+  --text-light: #e8eaed;
+  --input-bg-light: #303134;
+  --input-border-light: #5f6368;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
   margin: 40px auto;
   padding: 40px;
   border-radius: 16px;
-  background-color: rgba(30, 30, 30, 0.9); /* Darker background for the container */
+  background-color: rgba(30, 30, 30, 0.9);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -45,7 +45,7 @@ body {
 
 h1 {
   text-align: center;
-  color: var(--primary-color); /* Dark green for the title */
+  color: var(--primary-color);
   font-size: 36px;
   margin-bottom: 40px;
   text-transform: uppercase;
@@ -86,7 +86,7 @@ label {
 
 .icon {
   margin-right: 8px;
-  color: var(--primary-color); /* Dark green icon color */
+  color: var(--primary-color);
 }
 
 input[type="text"],
@@ -111,7 +111,7 @@ select:focus,
 textarea:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2); /* Dark green focus shadow */
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
 }
 
 textarea {
@@ -161,6 +161,7 @@ input[type="checkbox"]:checked::before {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 20px; /* Added top padding for Upload Banner/Poster */
 }
 
 .file-input-label {
@@ -175,7 +176,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .file-input-label:hover {
-  background-color: #03451c; /* Slightly different secondary color on hover */
+  background-color: #03451c;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -279,4 +280,3 @@ input[type="file"] {
 .form-group:nth-child(3) { animation-delay: 0.3s; }
 .form-group:nth-child(4) { animation-delay: 0.4s; }
 .form-group:nth-child(5) { animation-delay: 0.5s; }
-/* Add more if needed */
