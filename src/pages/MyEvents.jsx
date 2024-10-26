@@ -105,7 +105,7 @@ const MyEvents = () => {
     switch(activeTab) {
       case 'details':
         return (
-          <div className="event-details space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-details p-6">
             <div className="flex items-center gap-3 text-emerald-400">
               <Clock size={18} />
               <span>{event.time}</span>
@@ -119,9 +119,9 @@ const MyEvents = () => {
         );
       case 'attendees':
         return (
-          <div className="event-attendees space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-attendees p-6">
             {event.attendees.map(attendee => (
-              <div key={attendee.id} className="flex items-center justify-between p-3 bg-black/60 rounded-lg">
+              <div key={attendee.id} className="flex items-center justify-between p-3 bg-black/60 rounded-lg mb-2">
                 <div className="flex items-center gap-3">
                   <img src={attendee.avatar} alt={attendee.name} className="w-8 h-8 rounded-full" />
                   <span className="text-gray-200">{attendee.name}</span>
@@ -136,9 +136,9 @@ const MyEvents = () => {
         );
       case 'reviews':
         return (
-          <div className="event-reviews space-y-4 p-6 bg-black/40 rounded-lg">
+          <div className="event-reviews p-6">
             {event.reviews.map(review => (
-              <div key={review.id} className="p-4 bg-black/60 rounded-lg">
+              <div key={review.id} className="p-4 bg-black/60 rounded-lg mb-2">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-emerald-400 font-medium">{review.user}</span>
                   <div className="flex gap-1">
@@ -163,12 +163,12 @@ const MyEvents = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient text-white p-8 font-sans">
+    <div className="min-h-screen bg-gray-900 text-white p-8 font-sans">
       <h1 className="text-4xl font-bold text-center mb-12 text-emerald-400">My Events</h1>
       
       <div className="max-w-4xl mx-auto grid gap-8">
         {events.map(event => (
-          <div key={event.id} className="bg-black/80 backdrop-blur-lg rounded-xl border border-emerald-600/20 overflow-hidden transition-all duration-300 hover:border-emerald-400/50 hover:shadow-lg hover:shadow-emerald-900/20">
+          <div key={event.id} className="event-card bg-black/80 backdrop-blur-lg rounded-xl border border-emerald-600/20 overflow-hidden transition-all duration-300 hover:border-emerald-400/50 hover:shadow-lg hover:shadow-emerald-900/20">
             <div className="p-6 border-b border-emerald-900/30">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl font-semibold text-emerald-400">{event.title}</h3>
@@ -194,41 +194,46 @@ const MyEvents = () => {
                 </div>
               </div>
               
-              <div className="flex justify-between text-gray-300">
-                <span>{event.date}</span>
-                <span>{event.attendees.length} Attendees</span>
+              <div className="grid grid-cols-3 gap-4 mb-4">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Calendar size={18} className="text-emerald-400" />
+                  <span>{new Date(event.date).toLocaleDateString()}</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Users size={18} className="text-emerald-400" />
+                  <span>{event.attendees.length} attendees</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Star size={18} className="text-emerald-400" />
+                  <span>{event.reviews.length} reviews</span>
+                </div>
               </div>
             </div>
 
-            <div className="p-4">
-              <div className="flex justify-between">
+            <div className="flex border-t border-emerald-900/30">
+              {['details', 'attendees', 'reviews'].map(tab => (
                 <button 
-                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'details' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
-                  onClick={() => setActiveTab('details')}
+                  key={tab} 
+                  onClick={() => setActiveTab(tab)} 
+                  className={`flex-1 p-4 text-center transition-all duration-300 ${activeTab === tab ? 'bg-emerald-600 rounded-t-xl' : 'hover:bg-emerald-700'}`}
                 >
-                  Details
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
-                <button 
-                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'attendees' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
-                  onClick={() => setActiveTab('attendees')}
-                >
-                  Attendees
-                </button>
-                <button 
-                  className={`flex-1 p-3 rounded-lg text-center ${activeTab === 'reviews' ? 'bg-emerald-600' : 'hover:bg-emerald-500'}`} 
-                  onClick={() => setActiveTab('reviews')}
-                >
-                  Reviews
-                </button>
-              </div>
-              <TabContent event={event} />
+              ))}
             </div>
+
+            <TabContent event={event} />
           </div>
         ))}
       </div>
 
-      {shareModalOpen && <ShareModal event={selectedEvent} onClose={() => setShareModalOpen(false)} />}
-      {editModalOpen && <EditModal event={selectedEvent} onClose={() => setEditModalOpen(false)} />}
+      {shareModalOpen && (
+        <ShareModal event={selectedEvent} onClose={() => setShareModalOpen(false)} />
+      )}
+
+      {editModalOpen && (
+        <EditModal event={selectedEvent} onClose={() => setEditModalOpen(false)} />
+      )}
     </div>
   );
 };
